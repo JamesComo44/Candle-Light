@@ -10,6 +10,11 @@ ModelImporter:
     100008: kitchenWall
     100010: kitchenWall2
     100012: pCube24
+    100014: houseCeiling
+    100016: ceiling
+    100018: floors
+    100020: houseCeiling2
+    100022: kitchenWalls
     400000: //RootNode
     400002: polySurface1
     400004: houseFloor
@@ -17,6 +22,11 @@ ModelImporter:
     400008: kitchenWall
     400010: kitchenWall2
     400012: pCube24
+    400014: houseCeiling
+    400016: ceiling
+    400018: floors
+    400020: houseCeiling2
+    400022: kitchenWalls
     2100000: bedroom
     2100002: sunroom
     2100004: lambert9
@@ -30,16 +40,22 @@ ModelImporter:
     2300004: kitchenFloor1
     2300006: kitchenWall
     2300008: kitchenWall2
+    2300010: houseCeiling
+    2300012: houseCeiling2
     3300000: polySurface1
     3300002: houseFloor
     3300004: kitchenFloor1
     3300006: kitchenWall
     3300008: kitchenWall2
+    3300010: houseCeiling
+    3300012: houseCeiling2
     4300000: polySurface1
     4300002: kitchenFloor1
     4300004: kitchenWall
     4300006: kitchenWall2
     4300008: houseFloor
+    4300010: houseCeiling
+    4300012: houseCeiling2
     2186277476908879412: ImportLogs
   externalObjects:
   - first:

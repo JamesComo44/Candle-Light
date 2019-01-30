@@ -10,6 +10,7 @@ TagManager:
   - PuzzlePiece
   - GhostWaypoint
   - Ghost
+  - JuteBox
   layers:
   - Default
   - TransparentFX

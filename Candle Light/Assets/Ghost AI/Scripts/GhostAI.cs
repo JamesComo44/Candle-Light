@@ -26,7 +26,7 @@ public class GhostAI : MonoBehaviour
     // Waypoint Tracking Behavior
     public bool _lookForWaypoint;                      // A flag that, when true, tells the ghost to find a waypoint.
     private GameObject _currentWaypoint;                // A reference to the current waypoint to move to and idle at.
-    public GameObject[] _waypoints = new GameObject[4]; // A set of predefined waypoints for the ghost to move to.
+    private GameObject[] _waypoints;                    // A set of predefined waypoints for the ghost to move to.
     public int _waypointIndex;                          // Tracker index of which waypoint we are currently on.
 
     // Audio Components
@@ -42,6 +42,9 @@ public class GhostAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Get Ghost waypoints from hierarchy and save them in _waypoints[].
+        _waypoints = GameObject.FindGameObjectsWithTag("GhostWaypoint");
+
         // Get our object's rigidbody component, otherwise create a new one.
         _rigidBody = GetComponent<Rigidbody>();
         if (_rigidBody == null)

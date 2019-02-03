@@ -17,15 +17,6 @@ public class Jutebox : MonoBehaviour
     [SerializeField] public float RandomInterval;
     [SerializeField] public AudioClip[] randomClips;
     [Header("Music")]
-
-    [SerializeField] public AudioClip MainMenu;
-    [SerializeField] public AudioClip Floor1;
-    [SerializeField] public AudioClip Floor2;
-    [SerializeField] public AudioClip Floor3;
-    [SerializeField] public AudioClip Floor4;
-    [SerializeField] public AudioClip Ending;
-    [SerializeField] public RemoteSource[] remoteSources;
-
     [SerializeField] public LevelMusic MainMenu;
     [SerializeField] public LevelMusic Floor1;
     [SerializeField] public LevelMusic Floor2;
@@ -33,82 +24,13 @@ public class Jutebox : MonoBehaviour
     [SerializeField] public LevelMusic Floor4;
     [SerializeField] public LevelMusic Ending;
 
-
     private GameObject juteBox;
     private AudioSource[] audioSource;
     private bool isPlaying = false;
     private float timer;
     private AudioClip[] audioClips;
 
-
     Dictionary<string, AudioClip> clips = new Dictionary<string, AudioClip>();
-
-    [System.Serializable]
-    public class RemoteSource
-    {
-        public GameObject gameObject;
-        public AudioSource[] audioSource;
-    }
-
-    public class Play
-    {
-        /// <summary>
-        /// Play oneshot of the audioclip corresponding to the string passed.
-        /// </summary>
-        /// <param name="soundClipName"></param>
-        public void Sound(string soundClipName)
-        {
-            try
-            {
-                audioSource[1].PlayOneShot(clips[soundClipName]);
-            }
-            catch
-            {
-                print("AudioClip '" + soundClipName + "' not found.");
-            }
-        }
-
-
-        /// <summary>
-        /// Play a loop of the audioclip corresponding to the string passed.
-        /// </summary>
-        /// <param name="soundClipName"></param>
-        public void Music(string soundClipName)
-        {
-            try
-            {
-                audioSource[0].clip = clips[soundClipName];
-                audioSource[0].Play();
-            }
-            catch
-            {
-                print("AudioClip '" + soundClipName + "' not found.");
-            }
-        }
-
-
-        /// <summary>
-        /// Enable/Disable random play.
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="interval"></param>
-        public void Random(bool val, float interval)
-        {
-            isPlaying = val;
-            RandomInterval = interval;
-        }
-
-        /// <summary>
-        /// Enable/Disable random play.
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="interval"></param>
-        public void Random(bool val)
-        {
-            isPlaying = val;
-        }
-    }
-
 
     void Awake()
     {
@@ -233,7 +155,42 @@ public class Jutebox : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Enable/Disable random play.
+    /// </summary>
+    /// <param name="val"></param>
+    /// <param name="interval"></param>
+    public void PlayRandom(bool val, float interval)
+    {
+        isPlaying = val;
+        RandomInterval = interval;
+    }
 
+    /// <summary>
+    /// Enable/Disable random play.
+    /// </summary>
+    /// <param name="val"></param>
+    /// <param name="interval"></param>
+    public void PlayRandom(bool val)
+    {
+        isPlaying = val;
+    }
+
+    /// <summary>
+    /// Play oneshot of the audioclip corresponding to the string passed.
+    /// </summary>
+    /// <param name="soundClipName"></param>
+    public void PlaySound(string soundClipName)
+    {
+        try
+        {
+            audioSource[1].PlayOneShot(clips[soundClipName]);
+        }
+        catch
+        {
+            print("AudioClip '" + soundClipName + "' not found.");
+        }
+    }
 
     /// <summary>
     /// Set the sound effect volume.
@@ -244,6 +201,22 @@ public class Jutebox : MonoBehaviour
         audioSource[1].volume = volume;
     }
 
+    /// <summary>
+    /// Play a loop of the audioclip corresponding to the string passed.
+    /// </summary>
+    /// <param name="soundClipName"></param>
+    public void PlayMusic(string soundClipName)
+    {
+        try
+        {
+            audioSource[0].clip = clips[soundClipName];
+            audioSource[0].Play();
+        }
+        catch
+        {
+            print("AudioClip '" + soundClipName + "' not found.");
+        }
+    }
 
     /// <summary>
     /// Set the music volume.
@@ -253,7 +226,7 @@ public class Jutebox : MonoBehaviour
     {
         audioSource[0].volume = volume;
     }
-    
+
 
     /// <summary>
     /// Pause the current looping audioclip.
@@ -262,5 +235,4 @@ public class Jutebox : MonoBehaviour
     {
         audioSource[0].Pause();
     }
-    
 }

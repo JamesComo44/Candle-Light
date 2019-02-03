@@ -14,20 +14,17 @@ public class LoadGame : MonoBehaviour
 
     void Start()
     {
-        juktebox = GameObject.FindGameObjectWithTag("JuteBox").GetComponent<Jutebox>();
-        //juktebox.PlayMusic("Title Theme");
+        
     }
 
     //when the button is clicked the flame's scale will get bigger
     public void OnClick()
     {
-        juktebox.PauseMusic();
         fireAlpha.gameObject.transform.localScale = new Vector3(4, 4, 4);
         fireAdd.gameObject.transform.localScale = new Vector3(4, 4, 4);
         fireGlow.gameObject.transform.localScale = new Vector3(4, 4, 4);
         //delays calling the function for the duration of the timer
         Invoke("Delay", timer);
-        
     }
 
     //Loads the game scene

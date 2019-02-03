@@ -6,11 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class Jutebox : MonoBehaviour
 {
+    [System.Serializable]
+    public class LevelMusic
+    {
+        public AudioClip audioClip;
+        public float volume = 1.0f;
+    }
 
     [Header("                                Configure JuteBox")]
     [SerializeField] public float RandomInterval;
     [SerializeField] public AudioClip[] randomClips;
     [Header("Music")]
+
     [SerializeField] public AudioClip MainMenu;
     [SerializeField] public AudioClip Floor1;
     [SerializeField] public AudioClip Floor2;
@@ -18,6 +25,14 @@ public class Jutebox : MonoBehaviour
     [SerializeField] public AudioClip Floor4;
     [SerializeField] public AudioClip Ending;
     [SerializeField] public RemoteSource[] remoteSources;
+
+    [SerializeField] public LevelMusic MainMenu;
+    [SerializeField] public LevelMusic Floor1;
+    [SerializeField] public LevelMusic Floor2;
+    [SerializeField] public LevelMusic Floor3;
+    [SerializeField] public LevelMusic Floor4;
+    [SerializeField] public LevelMusic Ending;
+
 
     private GameObject juteBox;
     private AudioSource[] audioSource;
@@ -105,9 +120,8 @@ public class Jutebox : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
-        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
     }
-    
+
     //Start is called before the first frame update
     void Start()
     {
@@ -116,47 +130,53 @@ public class Jutebox : MonoBehaviour
         LoadAudioClips();
         CreateDictionary();
         timer = RandomInterval;
-        PlayMusic(MainMenu.name);
+        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+        PlayMusic(MainMenu.audioClip.name);
     }
 
     private void SceneManager_sceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        print(scene.name);
         switch (scene.name)
         {
             case "Main Menu":
                 {
-                    PlayMusic(MainMenu.name);
+                    PlayMusic(MainMenu.audioClip.name);
+                    MusicVolume(MainMenu.volume);
                     PlayRandom(false);
                     break;
                 }
             case "Level 1":
                 {
-                    PlayMusic(Floor1.name);
+                    PlayMusic(Floor1.audioClip.name);
+                    MusicVolume(Floor1.volume);
                     PlayRandom(true);
                     break;
                 }
             case "Level 2":
                 {
-                    PlayMusic(Floor2.name);
+                    PlayMusic(Floor2.audioClip.name);
+                    MusicVolume(Floor2.volume);
                     PlayRandom(true);
                     break;
                 }
             case "Level 3":
                 {
-                    PlayMusic(Floor3.name);
+                    PlayMusic(Floor3.audioClip.name);
+                    MusicVolume(Floor3.volume);
                     PlayRandom(true);
                     break;
                 }
             case "Level 4":
                 {
-                    PlayMusic(Floor4.name);
+                    PlayMusic(Floor4.audioClip.name);
+                    MusicVolume(Floor4.volume);
                     PlayRandom(true);
                     break;
                 }
             case "Final Scene":
                 {
-                    PlayMusic(Ending.name);
+                    PlayMusic(Ending.audioClip.name);
+                    MusicVolume(Ending.volume);
                     PlayRandom(false);
                     break;
                 }
@@ -202,7 +222,7 @@ public class Jutebox : MonoBehaviour
     // Plays the random audioclips at the determined interval.
     void RandomPlayInterval()
     {
-        if(isPlaying)
+        if (isPlaying)
         {
             timer -= Time.deltaTime;
             if (timer <= 0.0f)
@@ -239,7 +259,7 @@ public class Jutebox : MonoBehaviour
     /// </summary>
     public void PauseMusic()
     {
-            audioSource[0].Pause();
+        audioSource[0].Pause();
     }
     
 }

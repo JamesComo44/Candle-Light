@@ -17,6 +17,7 @@ public class Jutebox : MonoBehaviour
     [SerializeField] public AudioClip Floor3;
     [SerializeField] public AudioClip Floor4;
     [SerializeField] public AudioClip Ending;
+    [SerializeField] public RemoteSource[] remoteSources;
 
     private GameObject juteBox;
     private AudioSource[] audioSource;

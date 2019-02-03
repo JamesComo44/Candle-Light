@@ -4,34 +4,13 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: polySurface9
-    100004: seals3
-    100006: polySurface10
-    100008: polySurface12
     400000: //RootNode
-    400002: polySurface9
-    400004: seals3
-    400006: polySurface10
-    400008: polySurface12
     2100000: lambert11
     2100002: blinn1
     2100004: lambert1
-    2100006: lambert12
     2300000: //RootNode
-    2300002: polySurface9
-    2300004: seals3
-    2300006: polySurface10
-    2300008: polySurface12
     3300000: //RootNode
-    3300002: polySurface9
-    3300004: seals3
-    3300006: polySurface10
-    3300008: polySurface12
     4300000: polySurface5
-    4300002: seals3
-    4300004: polySurface9
-    4300006: polySurface10
-    4300008: polySurface12
     2186277476908879412: ImportLogs
   externalObjects:
   - first:

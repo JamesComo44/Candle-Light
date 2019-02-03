@@ -226,6 +226,7 @@ public class Jutebox : MonoBehaviour
     {
         audioSource[0].volume = volume;
     }
+    
 
     /// <summary>
     /// Pause the current looping audioclip.
